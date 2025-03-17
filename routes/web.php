@@ -12,9 +12,7 @@ Route::get('/', function () {
 // All routes require authentication
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
+    Route::get('dashboard', App\Http\Controllers\DashboardController::class)->name('dashboard');
     
     // Project routes
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');

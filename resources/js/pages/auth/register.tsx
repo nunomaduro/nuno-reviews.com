@@ -1,4 +1,4 @@
-import { Head, useForm } from '@inertiajs/react';
+import { Head, useForm, Link } from '@inertiajs/react';
 import { LoaderCircle } from 'lucide-react';
 import { FormEventHandler } from 'react';
 
@@ -32,12 +32,19 @@ export default function Register() {
     };
 
     return (
-        <AuthLayout title="Create an account" description="Enter your details below to create your account">
+        <AuthLayout title="Create an account" description="Join our community of creators and innovators">
             <Head title="Register" />
+            <div className="mb-8">
+                <Link href="/" className="inline-flex items-center text-2xl font-extrabold tracking-tight">
+                    <span className="text-white">Nuno</span>
+                    <span className="text-blue-500">Reviews</span>
+                </Link>
+            </div>
+
             <form className="flex flex-col gap-6" onSubmit={submit}>
                 <div className="grid gap-6">
                     <div className="grid gap-2">
-                        <Label htmlFor="name" className="text-gray-700 dark:text-gray-300">Name</Label>
+                        <Label htmlFor="name" className="text-gray-300">Name</Label>
                         <Input
                             id="name"
                             type="text"
@@ -49,13 +56,13 @@ export default function Register() {
                             onChange={(e) => setData('name', e.target.value)}
                             disabled={processing}
                             placeholder="Full name"
-                            className="rounded-md border-gray-300 bg-white px-4 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                            className="rounded-md border-gray-800 bg-gray-900 px-4 py-3 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-white placeholder-gray-500"
                         />
                         <InputError message={errors.name} className="mt-2" />
                     </div>
 
                     <div className="grid gap-2">
-                        <Label htmlFor="email" className="text-gray-700 dark:text-gray-300">Email address</Label>
+                        <Label htmlFor="email" className="text-gray-300">Email address</Label>
                         <Input
                             id="email"
                             type="email"
@@ -66,13 +73,13 @@ export default function Register() {
                             onChange={(e) => setData('email', e.target.value)}
                             disabled={processing}
                             placeholder="email@example.com"
-                            className="rounded-md border-gray-300 bg-white px-4 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                            className="rounded-md border-gray-800 bg-gray-900 px-4 py-3 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-white placeholder-gray-500"
                         />
                         <InputError message={errors.email} />
                     </div>
 
                     <div className="grid gap-2">
-                        <Label htmlFor="password" className="text-gray-700 dark:text-gray-300">Password</Label>
+                        <Label htmlFor="password" className="text-gray-300">Password</Label>
                         <Input
                             id="password"
                             type="password"
@@ -83,13 +90,13 @@ export default function Register() {
                             onChange={(e) => setData('password', e.target.value)}
                             disabled={processing}
                             placeholder="Password"
-                            className="rounded-md border-gray-300 bg-white px-4 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                            className="rounded-md border-gray-800 bg-gray-900 px-4 py-3 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-white placeholder-gray-500"
                         />
                         <InputError message={errors.password} />
                     </div>
 
                     <div className="grid gap-2">
-                        <Label htmlFor="password_confirmation" className="text-gray-700 dark:text-gray-300">Confirm password</Label>
+                        <Label htmlFor="password_confirmation" className="text-gray-300">Confirm password</Label>
                         <Input
                             id="password_confirmation"
                             type="password"
@@ -100,14 +107,14 @@ export default function Register() {
                             onChange={(e) => setData('password_confirmation', e.target.value)}
                             disabled={processing}
                             placeholder="Confirm password"
-                            className="rounded-md border-gray-300 bg-white px-4 py-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
+                            className="rounded-md border-gray-800 bg-gray-900 px-4 py-3 shadow-sm focus:border-blue-500 focus:ring-blue-500 text-white placeholder-gray-500"
                         />
                         <InputError message={errors.password_confirmation} />
                     </div>
 
                     <Button 
                         type="submit" 
-                        className="mt-4 w-full rounded-full bg-indigo-600 px-5 py-3 text-base font-medium text-white shadow-lg transition-all hover:bg-indigo-700 disabled:opacity-70 dark:bg-indigo-700 dark:hover:bg-indigo-600" 
+                        className="mt-4 w-full rounded-md bg-blue-500 px-5 py-3 text-base font-medium text-white shadow-lg transition-all hover:bg-blue-600 disabled:opacity-70" 
                         tabIndex={5} 
                         disabled={processing}
                     >
@@ -116,9 +123,9 @@ export default function Register() {
                     </Button>
                 </div>
 
-                <div className="text-center text-sm text-gray-600 dark:text-gray-400">
+                <div className="text-center text-sm text-gray-400">
                     Already have an account?{' '}
-                    <TextLink href={route('login')} className="font-medium text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300" tabIndex={6}>
+                    <TextLink href={route('login')} className="font-medium text-blue-500 hover:text-blue-400" tabIndex={6}>
                         Log in
                     </TextLink>
                 </div>

@@ -49,6 +49,38 @@ class ProjectController extends Controller
         return back();
     }
 
+    public function show(Request $request, Project $project): Response
+    {
+        $project->load('user');
+        $project->user_has_voted = $project->votes()->where('user_id', $request->user()->id)->exists();
+        
+        return Inertia::render('projects/show', [
+            'project' => $project,
+        ]);
+    }
+    
+    public function edit(Request $request, Project $project): Response
+    {
+        if ($project->user_id !== $request->user()->id) {
+            abort(403);
+        }
+        
+        return Inertia::render('projects/edit', [
+            'project' => $project,
+        ]);
+    }
+    
+    public function update(UpdateProjectRequest $request, Project $project, UpdateProject $action): RedirectResponse
+    {
+        if ($project->user_id !== $request->user()->id) {
+            abort(403);
+        }
+        
+        $action->handle($project, $request->validated());
+        
+        return redirect()->route('projects.show', $project);
+    }
+    
     public function destroy(Request $request, Project $project, DeleteProject $action): RedirectResponse
     {
         if ($project->user_id !== $request->user()->id) {
