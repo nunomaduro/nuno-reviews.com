@@ -11,6 +11,11 @@ class Vote extends Model
     /** @use HasFactory<\Database\Factories\VoteFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'project_id',
+    ];
+
     /**
      * Get the user that owns the vote.
      */

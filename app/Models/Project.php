@@ -12,6 +12,14 @@ class Project extends Model
     /** @use HasFactory<\Database\Factories\ProjectFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'title',
+        'url',
+        'description',
+        'votes_count',
+    ];
+
     /**
      * Get the attributes that should be cast.
      *

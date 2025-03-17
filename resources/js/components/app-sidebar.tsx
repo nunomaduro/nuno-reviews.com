@@ -13,6 +13,11 @@ const mainNavItems: NavItem[] = [
         href: '/dashboard',
         icon: LayoutGrid,
     },
+    {
+        title: 'Projects',
+        href: '/projects',
+        icon: Folder,
+    },
 ];
 
 const footerNavItems: NavItem[] = [
@@ -30,11 +35,11 @@ const footerNavItems: NavItem[] = [
 
 export function AppSidebar() {
     return (
-        <Sidebar collapsible="icon" variant="inset">
-            <SidebarHeader>
+        <Sidebar collapsible="icon" variant="inset" className="bg-gradient-to-b from-indigo-50 to-white dark:from-gray-900 dark:to-gray-800">
+            <SidebarHeader className="pb-4">
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton size="lg" asChild>
+                        <SidebarMenuButton size="lg" asChild className="hover:bg-indigo-100 dark:hover:bg-indigo-900/30">
                             <Link href="/dashboard" prefetch>
                                 <AppLogo />
                             </Link>
@@ -44,10 +49,10 @@ export function AppSidebar() {
             </SidebarHeader>
 
             <SidebarContent>
-                <NavMain items={mainNavItems} />
+                <NavMain items={mainNavItems} className="space-y-1" />
             </SidebarContent>
 
-            <SidebarFooter>
+            <SidebarFooter className="border-t border-indigo-100 dark:border-gray-700">
                 <NavFooter items={footerNavItems} className="mt-auto" />
                 <NavUser />
             </SidebarFooter>
